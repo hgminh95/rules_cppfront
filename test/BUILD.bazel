@@ -1,0 +1,16 @@
+load("@rules_cppfront//:cppfront.bzl", "cppfront_gen")
+
+cppfront_gen(
+    name = "test_cpp2",
+    src = "test.cpp2",
+)
+
+cc_binary(
+    name = "test",
+    srcs = [
+        ":test_cpp2",
+    ],
+    deps = [
+        "@cppfront//:cpp2util",
+    ],
+)
